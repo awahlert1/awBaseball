@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">awBaseball</string>
     <string name="action_settings">Settings</string>
-    <string name="baseball_title_hint">Enter a title for the baseball</string>
-    <string name="baseball_title_label">Title</string>
+    <string name="baseball_lastName_hint">Enter a last name for the player</string>
+    <string name="baseball_lastName_label">Last Name</string>
+    <string name="baseball_firstName_hint">Enter a fist name for the player</string>
+    <string name="baseball_firstName_label">First Name</string>
+    <string name="baseball_jersey_hint">Enter the jersey number of the player</string>
+    <string name="baseball_jersey_label">Jersey Number</string>
     <string name="baseball_details_label">Details</string>
     <string name="baseball_solved_label">Solved</string>
+    <string name="symbol_pitcher">Pitcher</string>
+    <string name="symbol_catcher">Catcher</string>
+    <string name="symbol_infield">Infield</string>
+    <string name="symbol_outfield">Outfield</string>
 </resources>

@@ -11,13 +11,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.util.Log;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Austin on 3/26/2017.
  */
 
 public class BaseballFragment extends Fragment {
-    private Baseball mBaseball;
+    private Player mPlayer;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
@@ -25,7 +28,7 @@ public class BaseballFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mBaseball = new Baseball();
+        mPlayer = new Player();
     }
 
     @Override
@@ -33,7 +36,7 @@ public class BaseballFragment extends Fragment {
                              Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_baseball, container, false);
 
-        mTitleField = (EditText)v.findViewById(R.id.baseball_title);
+        mTitleField = (EditText)v.findViewById(R.id.baseball_lastName);
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -42,7 +45,7 @@ public class BaseballFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count){
-                mBaseball.setTitle(s.toString());
+                mPlayer.setLastName(s.toString());
             }
 
             @Override
@@ -52,15 +55,72 @@ public class BaseballFragment extends Fragment {
         });
 
         mDateButton = (Button)v.findViewById(R.id.baseball_date);
-        mDateButton.setText(mBaseball.getDate().toString());
+        mDateButton.setText(mPlayer.getDate().toString());
         mDateButton.setEnabled(false);
 
-        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.baseball_solved);
+//        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.baseball_solved);
+//        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                //set the baseball solved property
+//                mPlayer.setSolved(isChecked);
+//            }
+//        });
+
+        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.player_ispitcher);
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //set the baseball solved property
-                mBaseball.setSolved(isChecked);
+                //set the player pitcher property
+                mPlayer.setPitcher(isChecked);
+                if (!isChecked){
+                    Log.d(TAG, "pitched box unchecked");
+                }else{
+                    Log.d(TAG, "pitcher box checked");
+                }
+            }
+        });
+
+        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.player_iscatchfield);
+        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //set the player catcher property
+                mPlayer.setCatcher(isChecked);
+                if (!isChecked){
+                    Log.d(TAG, "catcher box unchecked");
+                }else{
+                    Log.d(TAG, "catcher box checked");
+                }
+
+            }
+        });
+
+        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.player_isinfield);
+        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //set the player infield property
+                mPlayer.setInfield(isChecked);
+                if (!isChecked){
+                    Log.d(TAG, "infield box unchecked");
+                }else{
+                    Log.d(TAG, "infield box checked");
+                }
+            }
+        });
+
+        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.player_isoutfield);
+        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //set the player outfield property
+                mPlayer.setOutfield(isChecked);
+                if (!isChecked){
+                    Log.d(TAG, "outfield box unchecked");
+                }else{
+                    Log.d(TAG, "outfield box checked");
+                }
             }
         });
 

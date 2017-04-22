@@ -8,17 +8,48 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/baseball_title_label"
+        android:text="@string/baseball_firstName_label"
         style="?android:listSeparatorTextViewStyle"
         />
 
-    <EditText android:id="@+id/baseball_title"
+    <EditText android:id="@+id/baseball_firstName"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:hint="@string/baseball_firstName_hint"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/baseball_lastName_label"
+        style="?android:listSeparatorTextViewStyle"
+        />
+
+    <EditText android:id="@+id/baseball_lastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:hint="@string/baseball_title_hint"
+        android:hint="@string/baseball_lastName_hint"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/baseball_jersey_label"
+        style="?android:listSeparatorTextViewStyle"
+        />
+
+    <EditText android:id="@+id/baseball_jersey"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:hint="@string/baseball_jersey_hint"
+        />
+
 
     <TextView
         android:layout_width="match_parent"
@@ -34,12 +65,44 @@
         android:layout_marginRight="16dp"
         />
 
-    <CheckBox android:id="@+id/baseball_solved"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/baseball_solved_label"
+    <!--<CheckBox android:id="@+id/baseball_solved"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:text="@string/baseball_solved_label"-->
+        <!--/>-->
+
+    <CheckBox android:id="@+id/player_ispitcher"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:text="@string/symbol_pitcher"
+        />
+
+    <CheckBox android:id="@+id/player_iscatchfield"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:text="@string/symbol_catcher"
+        />
+
+    <CheckBox android:id="@+id/player_isoutfield"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:text="@string/symbol_outfield"
+        />
+
+    <CheckBox android:id="@+id/player_isinfield"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:text="@string/symbol_infield"
         />
 
 
