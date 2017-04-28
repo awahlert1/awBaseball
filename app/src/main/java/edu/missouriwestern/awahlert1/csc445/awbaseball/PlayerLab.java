@@ -26,10 +26,15 @@ public class PlayerLab {
     private PlayerLab(Context context){
         mPlayers = new ArrayList<>();
 
-        for (int i = 0; i < 51; i++){
+        for (int i = 0; i < 5; i++){
             Player player = new Player();
-            player.setFirstName("First Name Here " + i);
-            player.setOutfield(true); //every other one
+            player.setFirstName("");
+            player.setLastName("");
+            player.setNumber(00);
+            player.setPitcher(false);
+            player.setCatcher(false);
+            player.setInfield(false);
+            player.setOutfield(false);
             mPlayers.add(player);
         }
 

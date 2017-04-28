@@ -1,11 +1,15 @@
 package edu.missouriwestern.awahlert1.csc445.awbaseball;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.UUID;
 
 public class BaseballActivity extends SingleFragmentActivity {
 
@@ -27,9 +31,19 @@ public class BaseballActivity extends SingleFragmentActivity {
 //
 //    }
 
+    private static final String EXTRA_PLAYER_ID = "edu.missouriwestern.awahlert1.csc445.awbaseball.player_id";
+
+    public static Intent newIntent(Context packageContext, UUID playerId){
+        Intent intent = new Intent(packageContext, BaseballActivity.class);
+        intent.putExtra(EXTRA_PLAYER_ID, playerId);
+        return intent;
+    }
+
     @Override
     protected Fragment createFragment(){
-        return new BaseballFragment();
+
+        UUID playerId = (UUID) getIntent().getSerializableExtra(EXTRA_PLAYER_ID);
+        return BaseballFragment.newInstance(playerId);
     }
 
     @Override

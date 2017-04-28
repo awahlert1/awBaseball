@@ -148,8 +148,8 @@ public class Player {
         //Generate unigue identifier
         setID();
         setLastUpdate();
-        setLastName("");
-        setFirstName("");
+        setLastName("First Name");
+        setFirstName("Last Name");
         setNumber(99);
         setPitcher(false);
         setCatcher(false);

@@ -3,4 +3,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/player_list_item_titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Player title"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/player_list_item_dateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_list_item_titleTextView"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="4dp"
+        android:text="Player date"/>
+
+    <CheckBox
+        android:id="@+id/player_list_item_pitcherCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_list_item_dateTextView"
+        android:enabled="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:padding="4dp"  />
+
+    <CheckBox
+        android:id="@+id/player_list_item_catcherCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_list_item_dateTextView"
+        android:enabled="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/player_list_item_pitcherCheckBox"
+        android:padding="4dp"/>
+
+    <CheckBox
+        android:id="@+id/player_list_item_infieldCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_list_item_dateTextView"
+        android:enabled="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/player_list_item_catcherCheckBox"
+        android:padding="4dp"/>
+
+    <CheckBox
+        android:id="@+id/player_list_item_outfieldCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player_list_item_dateTextView"
+        android:enabled="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/player_list_item_infieldCheckBox"
+        android:padding="4dp"/>
+
+
 </RelativeLayout>
