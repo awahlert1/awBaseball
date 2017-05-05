@@ -3,9 +3,13 @@ package edu.missouriwestern.awahlert1.csc445.awbaseball;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -22,8 +26,16 @@ import java.util.List;
 
 public class PlayerListFragment extends Fragment {
 
+    private static final String SAVED_SUBTITE_VISIBLE = "subtitle";
     private RecyclerView mPlayerRcyclerView;
     private PlayerAdapter mAdapter;
+    private boolean mSubtitleVisible;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
@@ -32,6 +44,10 @@ public class PlayerListFragment extends Fragment {
 
         mPlayerRcyclerView = (RecyclerView) view.findViewById(R.id.player_recycler_view);
         mPlayerRcyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        if(saveInstanceState != null){
+            mSubtitleVisible = saveInstanceState.getBoolean(SAVED_SUBTITE_VISIBLE);
+        }
 
         updateUI();
 
@@ -44,6 +60,58 @@ public class PlayerListFragment extends Fragment {
         updateUI();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SAVED_SUBTITE_VISIBLE, mSubtitleVisible);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_player_list, menu);
+
+        MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
+        if(mSubtitleVisible){
+            subtitleItem.setTitle(R.string.hide_subtitle);
+        }else{
+            subtitleItem.setTitle(R.string.show_subtitle);
+        }
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menu_item_new_player:
+                Player player = new Player();
+                PlayerLab.get(getActivity()).addPlayer(player);
+                Intent intent = BaseballPagerActivity.newIntent(getActivity(), player.getID());
+                startActivity(intent);
+                return true;
+            case R.id.menu_item_show_subtitle:
+                mSubtitleVisible = !mSubtitleVisible;
+                getActivity().invalidateOptionsMenu();
+                updateSubtitle();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void updateSubtitle(){
+        PlayerLab playerLab = PlayerLab.get(getActivity());
+        int playerCount = playerLab.getPlayers().size();
+        String subtitle = getString(R.string.subtitle_format, playerCount);
+
+        if(!mSubtitleVisible){
+            subtitle = null;
+        }
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setSubtitle(subtitle);
+    }
+
     private void updateUI(){
         PlayerLab playerLab = PlayerLab.get(getActivity());
         List<Player> players = playerLab.getPlayers();
@@ -54,6 +122,8 @@ public class PlayerListFragment extends Fragment {
         }else{
             mAdapter.notifyDataSetChanged();
         }
+
+        updateSubtitle();
     }
 
     private class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -97,7 +167,8 @@ public class PlayerListFragment extends Fragment {
         @Override
         public void onClick(View v){
             Toast.makeText(getActivity(), mPlayer.getFirstName() + " clicked!", Toast.LENGTH_SHORT).show();
-            Intent intent = BaseballActivity.newIntent(getActivity(), mPlayer.getID());
+            //Intent intent = BaseballActivity.newIntent(getActivity(), mPlayer.getID());
+            Intent intent = BaseballPagerActivity.newIntent(getActivity(), mPlayer.getID());
             startActivity(intent);
         }
 

@@ -15,9 +15,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BaseballActivity"
+            android:name=".BaseballPagerActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".PlayerListActivity"
+            android:theme="@style/AppTheme">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN"/>-->
 

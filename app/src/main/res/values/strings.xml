@@ -13,4 +13,8 @@
     <string name="symbol_catcher">Catcher</string>
     <string name="symbol_infield">Infield</string>
     <string name="symbol_outfield">Outfield</string>
+    <string name="new_player">New Player</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle_format">%1$d players</string>
 </resources>

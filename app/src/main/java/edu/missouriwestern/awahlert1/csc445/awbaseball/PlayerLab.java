@@ -26,19 +26,21 @@ public class PlayerLab {
     private PlayerLab(Context context){
         mPlayers = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++){
-            Player player = new Player();
-            player.setFirstName("");
-            player.setLastName("");
-            player.setNumber(00);
-            player.setPitcher(false);
-            player.setCatcher(false);
-            player.setInfield(false);
-            player.setOutfield(false);
-            mPlayers.add(player);
-        }
+//        for (int i = 0; i < 5; i++){
+//            Player player = new Player();
+//            player.setFirstName("");
+//            player.setLastName("");
+//            player.setNumber(00);
+//            player.setPitcher(false);
+//            player.setCatcher(false);
+//            player.setInfield(false);
+//            player.setOutfield(false);
+//            mPlayers.add(player);
+//        }
 
     }
+
+    public void addPlayer(Player c){ mPlayers.add(c); }
 
     public List<Player> getPlayers(){
         return mPlayers;
